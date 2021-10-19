@@ -1,0 +1,5 @@
+jjheino@jjheinoNVMe:~$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                      PORTS     NAMES
+1c35e66aaf11   nginx     "/docker-entrypoint.…"   7 minutes ago   Up 7 minutes                80/tcp    magical_thompson
+0305d704b625   nginx     "/docker-entrypoint.…"   7 minutes ago   Exited (0) 3 seconds ago              focused_banach
+4e3f362c6257   nginx     "/docker-entrypoint.…"   7 minutes ago   Exited (0) 36 seconds ago             sad_lovelace
