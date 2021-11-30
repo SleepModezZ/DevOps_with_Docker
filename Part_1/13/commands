@@ -1,0 +1,76 @@
+user@user-ESPRIMO-P520:~/example-backend$ docker build . -t example-backend
+Sending build context to Docker daemon   42.5kB
+Step 1/6 : FROM golang:1.16
+1.16: Pulling from library/golang
+647acf3d48c2: Pull complete 
+b02967ef0034: Pull complete 
+e1ad2231829e: Pull complete 
+5576ce26bf1d: Pull complete 
+da9e15b4e149: Pull complete 
+c688b2f019af: Pull complete 
+303de02ebdda: Pull complete 
+Digest: sha256:e2821de7346f12445962f915492c36397ce8ebc142ede2205def794c37275d33
+Status: Downloaded newer image for golang:1.16
+ ---> 5b838b7289de
+Step 2/6 : EXPOSE 8080
+ ---> Running in 1565b3abf2e0
+Removing intermediate container 1565b3abf2e0
+ ---> cb1e8f15a3c1
+Step 3/6 : WORKDIR /usr/src/app
+ ---> Running in 61e94c4fa40d
+Removing intermediate container 61e94c4fa40d
+ ---> 5a91573c0ff0
+Step 4/6 : COPY . .
+ ---> f17fcef3f0d8
+Step 5/6 : RUN go build
+ ---> Running in 327397a8ef01
+go: downloading github.com/gin-contrib/cors v1.3.1
+go: downloading github.com/gin-gonic/gin v1.6.3
+go: downloading github.com/go-redis/redis/v8 v8.4.2
+go: downloading github.com/go-pg/pg/v10 v10.7.3
+go: downloading github.com/gin-contrib/sse v0.1.0
+go: downloading github.com/mattn/go-isatty v0.0.12
+go: downloading github.com/cespare/xxhash/v2 v2.1.1
+go: downloading github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f
+go: downloading go.opentelemetry.io/otel v0.14.0
+go: downloading github.com/go-playground/validator/v10 v10.2.0
+go: downloading github.com/golang/protobuf v1.4.3
+go: downloading github.com/ugorji/go v1.1.7
+go: downloading gopkg.in/yaml.v2 v2.3.0
+go: downloading github.com/ugorji/go/codec v1.1.7
+go: downloading golang.org/x/sys v0.0.0-20201119102817-f84b799fce68
+go: downloading mellium.im/sasl v0.2.1
+go: downloading github.com/go-pg/zerochecker v0.2.0
+go: downloading github.com/jinzhu/inflection v1.0.0
+go: downloading github.com/vmihailenco/msgpack/v5 v5.0.0
+go: downloading github.com/vmihailenco/tagparser v0.1.2
+go: downloading github.com/go-playground/universal-translator v0.17.0
+go: downloading github.com/leodido/go-urn v1.2.0
+go: downloading google.golang.org/protobuf v1.25.0
+go: downloading github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc
+go: downloading github.com/vmihailenco/bufpool v0.1.11
+go: downloading golang.org/x/crypto v0.0.0-20201117144127-c1f2f97bffc9
+go: downloading github.com/go-playground/locales v0.13.0
+Removing intermediate container 327397a8ef01
+ ---> 5878008feed2
+Step 6/6 : CMD ./server
+ ---> Running in 7fff287f4ab5
+Removing intermediate container 7fff287f4ab5
+ ---> 8d0c01764f3b
+Successfully built 8d0c01764f3b
+Successfully tagged example-backend:latest
+user@user-ESPRIMO-P520:~/example-backend$ docker run -p 8080:8080 example-backend
+[Ex 2.4+] REDIS_HOST env was not passed so redis connection is not initialized
+[Ex 2.6+] POSTGRES_HOST env was not passed so postgres connection is not initialized
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /ping                     --> server/router.pingpong (4 handlers)
+[GIN-debug] GET    /messages                 --> server/controller.GetMessages (4 handlers)
+[GIN-debug] POST   /messages                 --> server/controller.CreateMessage (4 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+[GIN] 2021/11/23 - 11:38:32 | 200 |      59.805µs |      172.17.0.1 | GET      "/ping"
+[GIN] 2021/11/23 - 11:38:32 | 404 |       7.947µs |      172.17.0.1 | GET      "/favicon.ico"
