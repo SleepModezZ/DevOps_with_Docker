@@ -1,0 +1,4 @@
+user@user-ESPRIMO-P520:~/example-frontend$ docker run -d -p 5000:5000 example-frontend
+bb8d4a80d50f55a817ca5d8c613b5f7d370dc78ed97864d88724b0838b6506fd
+user@user-ESPRIMO-P520:~/example-backend$ docker run -d -p 8080:8080 example-backend
+3d3011971dc9c49d87d91d2a7d03490e230aefabe0d1bc81f33bc42472452dd1
