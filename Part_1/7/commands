@@ -1,0 +1,19 @@
+user@user-ESPRIMO-P520:~$ docker build . -t web-server
+Sending build context to Docker daemon  127.6MB
+Step 1/2 : FROM devopsdockeruh/simple-web-service:alpine
+ ---> fd312adc88e0
+Step 2/2 : CMD server
+ ---> Running in d91c33c4c8db
+Removing intermediate container d91c33c4c8db
+ ---> fdf3a2643377
+Successfully built fdf3a2643377
+Successfully tagged web-server:latest
+user@user-ESPRIMO-P520:~$ docker run web-server
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /*path                    --> server.Start.func1 (3 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
