@@ -1,0 +1,6 @@
+Backend REQUEST_ORIGIN was changed from localhost:5000 to frontend:5000.
+Frontend REACT_APP_BACKEND_URL was changed from localhost:8080/ to backend:8080/.
+Those environment variables were moved from Dockerfiles to docker-compose.yml.
+Unnecessarly published ports from services that do not need them (backend, frontend and redis) were removed.
+
+(This simple exercise took almost 3 hours to complete. In the end the only changes were to the environment variables of both the frontend and backend. I'm pretty sure I had alredy tried those changes before but I must have broken something else at the time, or only changed one of them but not the other, or forgot to save some changes or... Moving the environment varibles to docker-compose.yml-file might have helped to find the solution because I can see both (and save both) at once.)
